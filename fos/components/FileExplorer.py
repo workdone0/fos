@@ -1,8 +1,7 @@
 from textual.app import ComposeResult
-from textual.widgets import Static
-from textual.containers import Vertical
+from textual.widgets import Static, DirectoryTree
 
 
 class FileExplorer(Static):
     def compose(self) -> ComposeResult:
-        yield Static("File Viewer", id="file-ex")
+        yield DirectoryTree("./", id="file-ex", classes="border")

@@ -4,4 +4,4 @@ from textual.widgets import Static
 
 class MainLayout(Static):
     def compose(self) -> ComposeResult:
-        yield Static("Two", classes="layout")
+        yield Static("Two", classes="horizontal-layout border")

@@ -7,4 +7,4 @@ from fos.components.FileExplorer import FileExplorer
 
 class SidePanel(Static):
     def compose(self) -> ComposeResult:
-        yield Container(Container(FileExplorer(), SearchBox(), classes="vertical-layout"), classes="layout")
+        yield Container(Container(FileExplorer(), SearchBox(), classes="vertical-layout"), classes="horizontal-layout")

@@ -1,19 +1,23 @@
 Screen {
     layout: grid;
     grid-size: 2;
-    grid-columns: 1fr 2fr;
+    grid-columns: 1fr 3fr;
 }
 
-.layout {
+.border {
     height: 100%;
-    border: solid green;
-    background: gray;
+    border: round #D8DEE9;
+    background: #2E3440;
+}
+
+.horizontal-layout {
+    height: 100%
 }
 
 .vertical-layout {
     layout: grid;
     grid-size: 1 2;
-    grid-rows: 75% 25%;
+    grid-rows: 90% 10%;
 }
 
 #file-ex {
