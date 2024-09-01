@@ -7,4 +7,4 @@ class MainLayout(Static):
 
     def compose(self) -> ComposeResult:
         with VerticalScroll(classes="horizontal-layout border", id="code-view"):
-            yield Static("__CODE_SHOWS_HERE__", id="code", expand=True)
+            yield Static(id="code", expand=True)
