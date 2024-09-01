@@ -1,0 +1,4 @@
+*/temp
+*.lock
+.idea
+fos/__pycache__

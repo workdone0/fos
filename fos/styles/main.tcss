@@ -1,0 +1,25 @@
+Screen {
+    layout: grid;
+    grid-size: 2;
+    grid-columns: 1fr 2fr;
+}
+
+.layout {
+    height: 100%;
+    border: solid green;
+    background: gray;
+}
+
+.vertical-layout {
+    layout: grid;
+    grid-size: 1 2;
+    grid-rows: 75% 25%;
+}
+
+#file-ex {
+    height: 3fr
+}
+
+#search {
+    height: 1fr
+}
