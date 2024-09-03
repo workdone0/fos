@@ -5,6 +5,9 @@ description = ""
 authors = ["shubham"]
 readme = "README.md"
 
+[tool.poetry.scripts]
+fos = "fos.app:app_cli"
+
 [tool.poetry.dependencies]
 python = "^3.9"
 textual = "^0.79.1"

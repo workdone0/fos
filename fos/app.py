@@ -1,7 +1,7 @@
 from pathlib import Path
 import typer
 from textual.app import App, ComposeResult
-from layout import MainLayout, SidePanel
+from fos.layout import MainLayout, SidePanel
 from textual.binding import Binding
 from textual.widgets import Footer, Header, DirectoryTree, Static
 from rich.syntax import Syntax
