@@ -10,8 +10,15 @@ from textual.widgets import DirectoryTree
 class FileExplorer(Widget):
     search = reactive("", recompose=True)
 
+    def __init__(self, path: Path | None = None):
+        super().__init__()
+        if path is None:
+            self.path = "./"
+        else:
+            self.path = path
+
     def compose(self) -> ComposeResult:
-        yield FilteredDirectoryTree("./", search_query=self.search)
+        yield FilteredDirectoryTree(self.path, search_query=self.search)
 
 
 class FilteredDirectoryTree(DirectoryTree):

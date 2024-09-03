@@ -1,9 +1,13 @@
+from pathlib import Path
+import typer
 from textual.app import App, ComposeResult
 from layout import MainLayout, SidePanel
 from textual.binding import Binding
 from textual.widgets import Footer, Header, DirectoryTree, Static
 from rich.syntax import Syntax
 from rich.traceback import Traceback
+
+app_cli = typer.Typer()
 
 
 class Layout(App):
@@ -12,6 +16,10 @@ class Layout(App):
         Binding(key="q", action="quit", description="Quit the app")
     ]
 
+    def __init__(self, path: Path | None = None) -> None:
+        super().__init__()
+        self.path = path
+
     def on_mount(self) -> None:
         self.title = "FOS"
         self.sub_title = "find on asteroids"
@@ -19,7 +27,7 @@ class Layout(App):
     def on_directory_tree_file_selected(
             self, event: DirectoryTree.FileSelected
     ) -> None:
-        """Called when the user click a file in the directory tree."""
+        """Called when the user clicks a file in the directory tree."""
         event.stop()
         code_view = self.query_one("#code", Static)
         try:
@@ -40,11 +48,19 @@ class Layout(App):
 
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
-        yield SidePanel.SidePanel()
+        yield SidePanel.SidePanel(path=self.path)
         yield MainLayout.MainLayout()
         yield Footer()
 
 
-if __name__ == "__main__":
-    app = Layout()
+@app_cli.command()
+def run(path: Path = typer.Option(None, help="Optional path to start the DirectoryTree from")):
+    if path and not path.exists():
+        typer.echo(f"Error: The provided path '{path}' does not exist.")
+        raise typer.Exit(code=1)
+    app = Layout(path)
     app.run()
+
+
+if __name__ == "__main__":
+    app_cli()
