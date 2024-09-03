@@ -3,6 +3,9 @@
 
 **fos** (Find On Steroids) is a powerful command-line tool written in Python using the [Textual](https://github.com/Textualize/textual) library. It allows you to search and view files within a folder effortlessly. Inspired by the [Frogmouth](https://github.com/Textualize/frogmouth) project, **fos** takes file browsing to the next level by combining search functionality with a user-friendly interface for file exploration.
 
+## Screenshots
+![Directory Tree](images/dir_tree.png)
+![Syntax Highlighting](images/syntax_highlight.png)
 ## Features
 
 - **Search and Browse Files:** Seamlessly search for files and browse through them within a specified folder.
