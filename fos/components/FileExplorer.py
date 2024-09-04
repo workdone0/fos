@@ -26,6 +26,9 @@ class FilteredDirectoryTree(DirectoryTree):
         super().__init__(path)
         self.search = search_query
 
+    def on_mount(self) -> None:
+        self.root.expand_all()
+
     def filter_paths(self, paths: Iterable[Path]) -> Iterable[Path]:
         def contains_search_term(path: Path) -> bool:
             if self.search.lower() in path.name.lower():
