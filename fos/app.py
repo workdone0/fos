@@ -31,6 +31,7 @@ class Layout(App):
     def action_collapse(self):
         tree: DirectoryTree = self.query_one(FilteredDirectoryTree)
         tree.root.collapse_all()
+        tree.root.expand()
 
     def action_expand(self):
         tree: DirectoryTree = self.query_one(FilteredDirectoryTree)
