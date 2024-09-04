@@ -15,7 +15,7 @@ class SidePanel(Static):
     def on_input_changed(self, message: Input.Changed) -> None:
         self.query_one(FileExplorer).search = message.value
 
-    def on_input_submitted(self, message: Input.Submitted) -> None:
+    def on_input_submitted(self) -> None:
         tree: DirectoryTree = self.query_one(FilteredDirectoryTree)
         tree.root.expand_all()
 
