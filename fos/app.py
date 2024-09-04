@@ -1,6 +1,8 @@
 from pathlib import Path
 import typer
 from textual.app import App, ComposeResult
+
+from fos.components.FileExplorer import FilteredDirectoryTree
 from fos.layout import MainLayout, SidePanel
 from textual.binding import Binding
 from textual.widgets import Footer, Header, DirectoryTree, Static
@@ -13,7 +15,9 @@ app_cli = typer.Typer()
 class Layout(App):
     CSS_PATH = "styles/main.tcss"
     BINDINGS = [
-        Binding(key="q", action="quit", description="Quit the app")
+        Binding(key="q", action="quit", description="Quit the app"),
+        Binding(key="c", action="collapse", description="Collapse Directory Tree"),
+        Binding(key="e", action="expand", description="Expand Directory Tree"),
     ]
 
     def __init__(self, path: Path | None = None) -> None:
@@ -23,6 +27,14 @@ class Layout(App):
     def on_mount(self) -> None:
         self.title = "FOS"
         self.sub_title = "find on asteroids"
+
+    def action_collapse(self):
+        tree: DirectoryTree = self.query_one(FilteredDirectoryTree)
+        tree.root.collapse_all()
+
+    def action_expand(self):
+        tree: DirectoryTree = self.query_one(FilteredDirectoryTree)
+        tree.root.expand_all()
 
     def on_directory_tree_file_selected(
             self, event: DirectoryTree.FileSelected

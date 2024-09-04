@@ -1,10 +1,10 @@
 from pathlib import Path
 
 from textual.app import ComposeResult
-from textual.widgets import Static, Input
+from textual.widgets import Static, Input, DirectoryTree
 from textual.containers import Container
 from fos.components.SearchBox import SearchBox
-from fos.components.FileExplorer import FileExplorer
+from fos.components.FileExplorer import FileExplorer, FilteredDirectoryTree
 
 
 class SidePanel(Static):
@@ -15,5 +15,10 @@ class SidePanel(Static):
     def on_input_changed(self, message: Input.Changed) -> None:
         self.query_one(FileExplorer).search = message.value
 
+    def on_input_submitted(self, message: Input.Submitted) -> None:
+        tree: DirectoryTree = self.query_one(FilteredDirectoryTree)
+        tree.root.expand_all()
+
     def compose(self) -> ComposeResult:
-        yield Container(Container(FileExplorer(self.path), SearchBox(), classes="vertical-layout"), classes="horizontal-layout")
+        yield Container(Container(FileExplorer(self.path), SearchBox(), classes="vertical-layout"),
+                        classes="horizontal-layout")
