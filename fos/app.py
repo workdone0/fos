@@ -49,7 +49,8 @@ class Layout(App):
                 line_numbers=True,
                 word_wrap=False,
                 indent_guides=True,
-                theme="lightbulb",
+                theme="github-dark",
+                background_color="#0A2239"
             )
         except Exception:
             code_view.update(Traceback(theme="github-dark", width=None))
