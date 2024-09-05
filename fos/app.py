@@ -50,6 +50,7 @@ class Layout(App):
                 word_wrap=False,
                 indent_guides=True,
                 theme="github-dark",
+                background_color="#0A2239"
             )
         except Exception:
             code_view.update(Traceback(theme="github-dark", width=None))
@@ -60,7 +61,7 @@ class Layout(App):
             self.sub_title = str(event.path)
 
     def compose(self) -> ComposeResult:
-        yield Header(show_clock=True)
+        yield Header(show_clock=True, icon="")
         yield SidePanel.SidePanel(path=self.path)
         yield MainLayout.MainLayout()
         yield Footer()
